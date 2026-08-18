@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de usuarios - Punto Amigo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f7f8;
+      color: #1f2933;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    h1 {
+      color: #1b6b5f;
+      margin-bottom: 8px;
+    }
+
+    section {
+      background: #ffffff;
+      border: 1px solid #d8e2e7;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 14px;
+    }
+
+    input,
+    select,
+    textarea {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #b8c5cc;
+      border-radius: 4px;
+      font: inherit;
+    }
+
+    button {
+      margin-top: 18px;
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 4px;
+      background: #1b6b5f;
+      color: #ffffff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid #d8e2e7;
+      padding: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Gestion de usuarios</h1>
+    <p>Modulo inicial para registrar usuarios que solicitan servicios en Punto Amigo.</p>
+
+    <section>
+      <h2>Registro de usuario</h2>
+      <form>
+        <label for="nombre">Nombre completo</label>
+        <input id="nombre" name="nombre" type="text" placeholder="Ej. Laura Martinez" required>
+
+        <label for="correo">Correo electronico</label>
+        <input id="correo" name="correo" type="email" placeholder="usuario@correo.com" required>
+
+        <label for="telefono">Telefono</label>
+        <input id="telefono" name="telefono" type="tel" placeholder="300 000 0000">
+
+        <label for="tipo">Tipo de usuario</label>
+        <select id="tipo" name="tipo">
+          <option>Cliente</option>
+          <option>Prestador de servicio</option>
+          <option>Administrador</option>
+        </select>
+
+        <label for="observaciones">Observaciones</label>
+        <textarea id="observaciones" name="observaciones" rows="3" placeholder="Notas relevantes del usuario"></textarea>
+
+        <button type="submit">Registrar usuario</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Usuarios de ejemplo</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Laura Martinez</td>
+            <td>laura@example.com</td>
+            <td>Cliente</td>
+            <td>Activo</td>
+          </tr>
+          <tr>
+            <td>Carlos Perez</td>
+            <td>carlos@example.com</td>
+            <td>Prestador de servicio</td>
+            <td>Pendiente de verificacion</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
