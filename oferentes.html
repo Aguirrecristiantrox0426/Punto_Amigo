@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de oferentes - Punto Amigo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f5ef;
+      color: #27313a;
+    }
+
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    h1 {
+      color: #8a4f18;
+      margin-bottom: 8px;
+    }
+
+    section {
+      background: #ffffff;
+      border: 1px solid #e2d7c8;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select,
+    textarea {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #c9bba9;
+      border-radius: 4px;
+      font: inherit;
+    }
+
+    textarea {
+      margin-top: 14px;
+    }
+
+    button {
+      margin-top: 18px;
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 4px;
+      background: #8a4f18;
+      color: #ffffff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid #e2d7c8;
+      padding: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Gestion de oferentes</h1>
+    <p>Modulo inicial para registrar prestadores de servicios y validar su disponibilidad.</p>
+
+    <section>
+      <h2>Perfil del prestador</h2>
+      <form>
+        <div class="grid">
+          <div>
+            <label for="nombre">Nombre del oferente</label>
+            <input id="nombre" name="nombre" type="text" placeholder="Ej. Ana Gomez" required>
+          </div>
+
+          <div>
+            <label for="categoria">Categoria principal</label>
+            <select id="categoria" name="categoria">
+              <option>Reparaciones</option>
+              <option>Limpieza</option>
+              <option>Transporte</option>
+              <option>Asistencia tecnologica</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="zona">Zona de atencion</label>
+            <input id="zona" name="zona" type="text" placeholder="Barrio o municipio" required>
+          </div>
+
+          <div>
+            <label for="horario">Horario disponible</label>
+            <input id="horario" name="horario" type="text" placeholder="Lunes a viernes, 8 a.m. - 5 p.m.">
+          </div>
+        </div>
+
+        <label for="experiencia">Experiencia y certificaciones</label>
+        <textarea id="experiencia" name="experiencia" rows="4" placeholder="Describe experiencia, referencias o certificaciones"></textarea>
+
+        <button type="submit">Guardar oferente</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Oferentes en revision</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Categoria</th>
+            <th>Zona</th>
+            <th>Verificacion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ana Gomez</td>
+            <td>Limpieza</td>
+            <td>Centro</td>
+            <td>Documentos pendientes</td>
+          </tr>
+          <tr>
+            <td>Jorge Rios</td>
+            <td>Reparaciones</td>
+            <td>Norte</td>
+            <td>Aprobado</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
