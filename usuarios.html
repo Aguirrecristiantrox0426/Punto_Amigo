@@ -13,7 +13,7 @@
     }
 
     main {
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 32px 20px;
     }
@@ -21,6 +21,11 @@
     h1 {
       color: #1b6b5f;
       margin-bottom: 8px;
+    }
+
+    .intro {
+      margin-bottom: 0;
+      color: #4a5c63;
     }
 
     section {
@@ -31,10 +36,16 @@
       margin-top: 20px;
     }
 
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
     label {
       display: block;
       font-weight: bold;
-      margin-top: 14px;
+      margin-bottom: 6px;
     }
 
     input,
@@ -43,10 +54,13 @@
       box-sizing: border-box;
       width: 100%;
       padding: 10px;
-      margin-top: 6px;
       border: 1px solid #b8c5cc;
       border-radius: 4px;
       font: inherit;
+    }
+
+    textarea {
+      margin-top: 14px;
     }
 
     button {
@@ -71,63 +85,137 @@
       border-bottom: 1px solid #d8e2e7;
       padding: 10px;
       text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #edf5f3;
+    }
+
+    .estado-activo {
+      color: #1b6b5f;
+      font-weight: bold;
+    }
+
+    .estado-revision {
+      color: #8a5a00;
+      font-weight: bold;
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding: 24px 14px;
+      }
+
+      table,
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+      }
+
+      th {
+        display: none;
+      }
+
+      td {
+        border-bottom: 0;
+        padding: 8px 0;
+      }
+
+      tr {
+        border-bottom: 1px solid #d8e2e7;
+        padding: 10px 0;
+      }
     }
   </style>
 </head>
 <body>
   <main>
     <h1>Gestion de usuarios</h1>
-    <p>Modulo inicial para registrar usuarios que solicitan servicios en Punto Amigo.</p>
+    <p class="intro">Prototipo visual para registrar y administrar usuarios de Punto Amigo que solicitan o prestan servicios.</p>
 
     <section>
       <h2>Registro de usuario</h2>
       <form>
-        <label for="nombre">Nombre completo</label>
-        <input id="nombre" name="nombre" type="text" placeholder="Ej. Laura Martinez" required>
+        <div class="grid">
+          <div>
+            <label for="nombre">Nombre completo</label>
+            <input id="nombre" name="nombre" type="text" placeholder="Ej. Laura Martinez" required>
+          </div>
 
-        <label for="correo">Correo electronico</label>
-        <input id="correo" name="correo" type="email" placeholder="usuario@correo.com" required>
+          <div>
+            <label for="documento">Documento o identificacion</label>
+            <input id="documento" name="documento" type="text" placeholder="Ej. CC 1000000000" required>
+          </div>
 
-        <label for="telefono">Telefono</label>
-        <input id="telefono" name="telefono" type="tel" placeholder="300 000 0000">
+          <div>
+            <label for="correo">Correo electronico</label>
+            <input id="correo" name="correo" type="email" placeholder="usuario@correo.com" required>
+          </div>
 
-        <label for="tipo">Tipo de usuario</label>
-        <select id="tipo" name="tipo">
-          <option>Cliente</option>
-          <option>Prestador de servicio</option>
-          <option>Administrador</option>
-        </select>
+          <div>
+            <label for="telefono">Telefono</label>
+            <input id="telefono" name="telefono" type="tel" placeholder="300 000 0000">
+          </div>
+
+          <div>
+            <label for="tipo">Tipo de usuario</label>
+            <select id="tipo" name="tipo">
+              <option>Cliente</option>
+              <option>Prestador de servicios</option>
+              <option>Administrador</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="estado">Estado de la cuenta</label>
+            <select id="estado" name="estado">
+              <option>Activo</option>
+              <option>Pendiente de revision</option>
+              <option>Inactivo</option>
+            </select>
+          </div>
+        </div>
 
         <label for="observaciones">Observaciones</label>
-        <textarea id="observaciones" name="observaciones" rows="3" placeholder="Notas relevantes del usuario"></textarea>
+        <textarea id="observaciones" name="observaciones" rows="3" placeholder="Notas relevantes para la gestion del usuario"></textarea>
 
         <button type="submit">Registrar usuario</button>
       </form>
     </section>
 
     <section>
-      <h2>Usuarios de ejemplo</h2>
+      <h2>Usuarios registrados de ejemplo</h2>
       <table>
         <thead>
           <tr>
             <th>Nombre</th>
+            <th>Documento</th>
             <th>Correo</th>
-            <th>Tipo</th>
+            <th>Telefono</th>
+            <th>Rol</th>
             <th>Estado</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Laura Martinez</td>
+            <td>CC 1000000001</td>
             <td>laura@example.com</td>
+            <td>300 111 2233</td>
             <td>Cliente</td>
-            <td>Activo</td>
+            <td class="estado-activo">Activo</td>
           </tr>
           <tr>
             <td>Carlos Perez</td>
+            <td>CC 1000000002</td>
             <td>carlos@example.com</td>
-            <td>Prestador de servicio</td>
-            <td>Pendiente de verificacion</td>
+            <td>300 444 5566</td>
+            <td>Prestador de servicios</td>
+            <td class="estado-revision">Pendiente de revision</td>
           </tr>
         </tbody>
       </table>
