@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de servicios - Punto Amigo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #eef4fb;
+      color: #243447;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 20px;
+    }
+
+    h1 {
+      color: #255f85;
+      margin-bottom: 8px;
+    }
+
+    section {
+      background: #ffffff;
+      border: 1px solid #cfdde8;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .servicio {
+      border: 1px solid #cfdde8;
+      border-radius: 8px;
+      padding: 14px;
+      background: #f9fcff;
+    }
+
+    .servicio h3 {
+      margin-top: 0;
+      color: #255f85;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 14px;
+    }
+
+    input,
+    select,
+    textarea {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #adc2d2;
+      border-radius: 4px;
+      font: inherit;
+    }
+
+    button {
+      margin-top: 18px;
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 4px;
+      background: #255f85;
+      color: #ffffff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Gestion de servicios</h1>
+    <p>Modulo inicial para publicar servicios y registrar solicitudes de los usuarios.</p>
+
+    <section>
+      <h2>Catalogo de servicios</h2>
+      <div class="catalogo">
+        <article class="servicio">
+          <h3>Reparaciones locativas</h3>
+          <p>Atencion de arreglos basicos para hogar y negocios.</p>
+          <strong>Estado: disponible</strong>
+        </article>
+        <article class="servicio">
+          <h3>Limpieza programada</h3>
+          <p>Servicios de aseo por horas o jornadas completas.</p>
+          <strong>Estado: disponible</strong>
+        </article>
+        <article class="servicio">
+          <h3>Soporte tecnologico</h3>
+          <p>Configuracion de equipos, redes y herramientas digitales.</p>
+          <strong>Estado: en revision</strong>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Solicitud de servicio</h2>
+      <form>
+        <label for="servicio">Servicio requerido</label>
+        <select id="servicio" name="servicio">
+          <option>Reparaciones locativas</option>
+          <option>Limpieza programada</option>
+          <option>Soporte tecnologico</option>
+        </select>
+
+        <label for="direccion">Direccion o zona de atencion</label>
+        <input id="direccion" name="direccion" type="text" placeholder="Ej. Barrio Centro" required>
+
+        <label for="fecha">Fecha estimada</label>
+        <input id="fecha" name="fecha" type="date" required>
+
+        <label for="detalle">Detalle de la solicitud</label>
+        <textarea id="detalle" name="detalle" rows="4" placeholder="Describe que necesita el usuario"></textarea>
+
+        <button type="submit">Registrar solicitud</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
