@@ -3,29 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestion de oferentes - Punto Amigo</title>
+  <title>Gestion de prestadores - Punto Amigo</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #f7f5ef;
-      color: #27313a;
+      background: #f3f7f4;
+      color: #263238;
     }
 
     main {
-      max-width: 920px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 32px 20px;
     }
 
     h1 {
-      color: #8a4f18;
+      color: #2f6f4e;
       margin-bottom: 8px;
+    }
+
+    .intro {
+      margin-bottom: 0;
+      color: #4b5b55;
     }
 
     section {
       background: #ffffff;
-      border: 1px solid #e2d7c8;
+      border: 1px solid #d7e3dc;
       border-radius: 8px;
       padding: 20px;
       margin-top: 20px;
@@ -49,7 +54,7 @@
       box-sizing: border-box;
       width: 100%;
       padding: 10px;
-      border: 1px solid #c9bba9;
+      border: 1px solid #b7c8bf;
       border-radius: 4px;
       font: inherit;
     }
@@ -63,7 +68,7 @@
       padding: 10px 16px;
       border: 0;
       border-radius: 4px;
-      background: #8a4f18;
+      background: #2f6f4e;
       color: #ffffff;
       font-weight: bold;
       cursor: pointer;
@@ -77,28 +82,67 @@
 
     th,
     td {
-      border-bottom: 1px solid #e2d7c8;
+      border-bottom: 1px solid #d7e3dc;
       padding: 10px;
       text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #eef5f1;
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding: 24px 14px;
+      }
+
+      table,
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+      }
+
+      th {
+        display: none;
+      }
+
+      td {
+        border-bottom: 0;
+        padding: 8px 0;
+      }
+
+      tr {
+        border-bottom: 1px solid #d7e3dc;
+        padding: 10px 0;
+      }
     }
   </style>
 </head>
 <body>
   <main>
-    <h1>Gestion de oferentes</h1>
-    <p>Modulo inicial para registrar prestadores de servicios y validar su disponibilidad.</p>
+    <h1>Gestion de prestadores de servicios</h1>
+    <p class="intro">Prototipo visual para registrar y revisar perfiles de prestadores que ofrecen servicios en Punto Amigo.</p>
 
     <section>
       <h2>Perfil del prestador</h2>
       <form>
         <div class="grid">
           <div>
-            <label for="nombre">Nombre del oferente</label>
+            <label for="nombre">Nombre del prestador</label>
             <input id="nombre" name="nombre" type="text" placeholder="Ej. Ana Gomez" required>
           </div>
 
           <div>
-            <label for="categoria">Categoria principal</label>
+            <label for="contacto">Informacion de contacto</label>
+            <input id="contacto" name="contacto" type="text" placeholder="Telefono o correo de contacto" required>
+          </div>
+
+          <div>
+            <label for="categoria">Categoria de servicio</label>
             <select id="categoria" name="categoria">
               <option>Reparaciones</option>
               <option>Limpieza</option>
@@ -108,29 +152,37 @@
           </div>
 
           <div>
-            <label for="zona">Zona de atencion</label>
+            <label for="zona">Zona o ubicacion general</label>
             <input id="zona" name="zona" type="text" placeholder="Barrio o municipio" required>
           </div>
 
           <div>
-            <label for="horario">Horario disponible</label>
-            <input id="horario" name="horario" type="text" placeholder="Lunes a viernes, 8 a.m. - 5 p.m.">
+            <label for="estado">Estado de verificacion</label>
+            <select id="estado" name="estado">
+              <option>Pendiente de revision</option>
+              <option>Verificado</option>
+              <option>Requiere actualizacion</option>
+            </select>
           </div>
         </div>
 
-        <label for="experiencia">Experiencia y certificaciones</label>
+        <label for="descripcion">Descripcion del servicio que ofrece</label>
+        <textarea id="descripcion" name="descripcion" rows="3" placeholder="Describe el servicio principal ofrecido"></textarea>
+
+        <label for="experiencia">Experiencia, certificaciones o informacion relevante</label>
         <textarea id="experiencia" name="experiencia" rows="4" placeholder="Describe experiencia, referencias o certificaciones"></textarea>
 
-        <button type="submit">Guardar oferente</button>
+        <button type="submit">Guardar prestador</button>
       </form>
     </section>
 
     <section>
-      <h2>Oferentes en revision</h2>
+      <h2>Prestadores de ejemplo</h2>
       <table>
         <thead>
           <tr>
             <th>Nombre</th>
+            <th>Contacto</th>
             <th>Categoria</th>
             <th>Zona</th>
             <th>Verificacion</th>
@@ -139,15 +191,17 @@
         <tbody>
           <tr>
             <td>Ana Gomez</td>
+            <td>ana@example.com</td>
             <td>Limpieza</td>
             <td>Centro</td>
-            <td>Documentos pendientes</td>
+            <td>Pendiente de revision</td>
           </tr>
           <tr>
             <td>Jorge Rios</td>
+            <td>jorge@example.com</td>
             <td>Reparaciones</td>
             <td>Norte</td>
-            <td>Aprobado</td>
+            <td>Verificado</td>
           </tr>
         </tbody>
       </table>
