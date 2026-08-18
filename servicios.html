@@ -13,7 +13,7 @@
     }
 
     main {
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto;
       padding: 32px 20px;
     }
@@ -21,6 +21,11 @@
     h1 {
       color: #255f85;
       margin-bottom: 8px;
+    }
+
+    .intro {
+      margin-bottom: 0;
+      color: #4a5a68;
     }
 
     section {
@@ -33,7 +38,7 @@
 
     .catalogo {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 14px;
       margin-top: 12px;
     }
@@ -50,10 +55,22 @@
       color: #255f85;
     }
 
+    .detalle {
+      display: block;
+      margin-top: 8px;
+      color: #4a5a68;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
     label {
       display: block;
       font-weight: bold;
-      margin-top: 14px;
+      margin-bottom: 6px;
     }
 
     input,
@@ -62,10 +79,13 @@
       box-sizing: border-box;
       width: 100%;
       padding: 10px;
-      margin-top: 6px;
       border: 1px solid #adc2d2;
       border-radius: 4px;
       font: inherit;
+    }
+
+    textarea {
+      margin-top: 14px;
     }
 
     button {
@@ -83,25 +103,95 @@
 <body>
   <main>
     <h1>Gestion de servicios</h1>
-    <p>Modulo inicial para publicar servicios y registrar solicitudes de los usuarios.</p>
+    <p class="intro">Prototipo visual para publicar, consultar y solicitar servicios ofrecidos por prestadores de Punto Amigo.</p>
 
     <section>
-      <h2>Catalogo de servicios</h2>
+      <h2>Registrar o publicar servicio</h2>
+      <form>
+        <div class="grid">
+          <div>
+            <label for="nombre-servicio">Nombre del servicio</label>
+            <input id="nombre-servicio" name="nombre-servicio" type="text" placeholder="Ej. Reparacion de griferia" required>
+          </div>
+
+          <div>
+            <label for="categoria-publicacion">Categoria</label>
+            <select id="categoria-publicacion" name="categoria-publicacion">
+              <option>Reparaciones</option>
+              <option>Limpieza</option>
+              <option>Transporte</option>
+              <option>Asistencia tecnologica</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="prestador">Prestador asociado</label>
+            <input id="prestador" name="prestador" type="text" placeholder="Nombre del prestador" required>
+          </div>
+
+          <div>
+            <label for="estado-servicio">Estado del servicio</label>
+            <select id="estado-servicio" name="estado-servicio">
+              <option>Disponible</option>
+              <option>En revision</option>
+              <option>No disponible</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="descripcion-servicio">Descripcion</label>
+        <textarea id="descripcion-servicio" name="descripcion-servicio" rows="3" placeholder="Describe el servicio que se publicara"></textarea>
+
+        <button type="submit">Publicar servicio</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Consultar servicios</h2>
+      <form>
+        <div class="grid">
+          <div>
+            <label for="busqueda">Buscar por palabra clave</label>
+            <input id="busqueda" name="busqueda" type="search" placeholder="Ej. limpieza, transporte, reparacion">
+          </div>
+
+          <div>
+            <label for="categoria-consulta">Filtrar por categoria</label>
+            <select id="categoria-consulta" name="categoria-consulta">
+              <option>Todas las categorias</option>
+              <option>Reparaciones</option>
+              <option>Limpieza</option>
+              <option>Transporte</option>
+              <option>Asistencia tecnologica</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <section>
+      <h2>Catalogo de servicios de ejemplo</h2>
       <div class="catalogo">
         <article class="servicio">
           <h3>Reparaciones locativas</h3>
           <p>Atencion de arreglos basicos para hogar y negocios.</p>
-          <strong>Estado: disponible</strong>
+          <span class="detalle">Categoria: Reparaciones</span>
+          <span class="detalle">Prestador: Jorge Rios</span>
+          <strong class="detalle">Estado: disponible</strong>
         </article>
         <article class="servicio">
-          <h3>Limpieza programada</h3>
-          <p>Servicios de aseo por horas o jornadas completas.</p>
-          <strong>Estado: disponible</strong>
+          <h3>Limpieza general</h3>
+          <p>Apoyo en limpieza de espacios residenciales o comerciales.</p>
+          <span class="detalle">Categoria: Limpieza</span>
+          <span class="detalle">Prestador: Ana Gomez</span>
+          <strong class="detalle">Estado: disponible</strong>
         </article>
         <article class="servicio">
           <h3>Soporte tecnologico</h3>
           <p>Configuracion de equipos, redes y herramientas digitales.</p>
-          <strong>Estado: en revision</strong>
+          <span class="detalle">Categoria: Asistencia tecnologica</span>
+          <span class="detalle">Prestador: Mateo Ruiz</span>
+          <strong class="detalle">Estado: en revision</strong>
         </article>
       </div>
     </section>
@@ -112,18 +202,15 @@
         <label for="servicio">Servicio requerido</label>
         <select id="servicio" name="servicio">
           <option>Reparaciones locativas</option>
-          <option>Limpieza programada</option>
+          <option>Limpieza general</option>
           <option>Soporte tecnologico</option>
         </select>
 
-        <label for="direccion">Direccion o zona de atencion</label>
-        <input id="direccion" name="direccion" type="text" placeholder="Ej. Barrio Centro" required>
+        <label for="zona">Zona o ubicacion</label>
+        <input id="zona" name="zona" type="text" placeholder="Ej. Barrio Centro" required>
 
-        <label for="fecha">Fecha estimada</label>
-        <input id="fecha" name="fecha" type="date" required>
-
-        <label for="detalle">Detalle de la solicitud</label>
-        <textarea id="detalle" name="detalle" rows="4" placeholder="Describe que necesita el usuario"></textarea>
+        <label for="detalle">Descripcion de la necesidad</label>
+        <textarea id="detalle" name="detalle" rows="4" placeholder="Describe el servicio que necesita el usuario"></textarea>
 
         <button type="submit">Registrar solicitud</button>
       </form>
